@@ -34,9 +34,12 @@ Plugin 'moll/vim-node'
 
 Plugin 'scrooloose/syntastic'
 
+Plugin 'terryma/vim-multiple-cursors'
+
+
 call vundle#end()            " required
 filetype plugin indent on    " required
-
+let g:Powerline_symbols = 'fancy'
 set number
 syntax enable
 set guicursor=i:ver25-iCursor
@@ -49,5 +52,30 @@ let g:airline_theme='solarized_flood'
 nnoremap <F8> :!g++ -o  %:r.out % -std=c++14<Enter>
 nnoremap <F9> :!./%:r.out
 nnoremap <F5> :!python3 %
-
 :autocmd BufNewFile *.cpp 0r ~/.vim/templates/skeleton.cpp
+
+set hidden
+set ignorecase
+set wildmenu
+set smartcase
+set laststatus=2
+set hlsearch
+set incsearch
+set cindent
+
+map <C-t> :NERDTreeToggle<CR> " T for tree
+" Opening nerd tree when opening a folder
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+" Close vim if only nerdtree is open
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+"Default mapping
+let g:multi_cursor_start_word_key      = '<C-n>'
+let g:multi_cursor_select_all_word_key = '<A-n>'
+let g:multi_cursor_start_key           = 'g<C-n>'
+let g:multi_cursor_select_all_key      = 'g<A-n>'
+let g:multi_cursor_next_key            = '<C-n>'
+let g:multi_cursor_prev_key            = '<C-p>'
+let g:multi_cursor_skip_key            = '<C-x>'
+let g:multi_cursor_quit_key            = '<Esc>'
