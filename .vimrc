@@ -1,14 +1,13 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
+set nocompatible              
+set mouse =n
+filetype off                  
 set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
-" let Vundle manage Vundle, required
+call vundle#begin()
+
 Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'dracula/vim'
 
 Plugin 'preservim/nerdtree'
 
@@ -16,35 +15,34 @@ Plugin 'Royal-Colorschemes'
 
 Plugin 'powerline/powerline'
 
-Plugin 'majutsushi/tagbar'
-
-Plugin 'octol/vim-cpp-enhanced-highlight'
-
-Plugin 'raimondi/delimitmate'
-
 Plugin 'vim-airline/vim-airline'
-
-Plugin 'vim-airline/vim-airline-themes'
-
-Plugin 'dracula/vim'
 
 Plugin 'ryanoasis/vim-devicons'
 
-Plugin 'moll/vim-node'
+Plugin 'vim-airline/vim-airline-themes'
 
 Plugin 'scrooloose/syntastic'
 
-Plugin 'terryma/vim-multiple-cursors'
+Plugin 'msanders/snipmate.vim'
 
+Plugin 'jiangmiao/auto-pairs'
 
-call vundle#end()            " required
+Plugin 'junegunn/fzf'
+
+Plugin 'joshdick/onedark.vim'
+
+call vundle#end()            
+
+filetype plugin indent on  
+
 filetype plugin indent on    " required
 let g:Powerline_symbols = 'fancy'
 set number
 syntax enable
 set guicursor=i:ver25-iCursor
 set autoindent
-colorscheme dracula
+"colorscheme dracula
+colorscheme onedark
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 set encoding=UTF-8
@@ -70,12 +68,23 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 " Close vim if only nerdtree is open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-"Default mapping
-let g:multi_cursor_start_word_key      = '<C-n>'
-let g:multi_cursor_select_all_word_key = '<A-n>'
-let g:multi_cursor_start_key           = 'g<C-n>'
-let g:multi_cursor_select_all_key      = 'g<A-n>'
-let g:multi_cursor_next_key            = '<C-n>'
-let g:multi_cursor_prev_key            = '<C-p>'
-let g:multi_cursor_skip_key            = '<C-x>'
-let g:multi_cursor_quit_key            = '<Esc>'
+autocmd FileType python map <buffer> <F6> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+autocmd FileType python imap <buffer> <F6> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+
+
+"fuzzy finder search addition 
+nnoremap <silent> <C-f> :FZF<CR>
+
+"navigate back 
+nnoremap <silent> <C-b> :bp<CR>
+
+"vertical split
+nnoremap <C-v> : vsplit 
+nnoremap <C-h> : split
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
