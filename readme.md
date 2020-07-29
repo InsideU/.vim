@@ -2,7 +2,6 @@
 [![Build Status][travis-image]][travis-url]
 [![Downloads Stats][npm-downloads]][npm-url]
 [![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![License][license-shield]][license-url]
@@ -63,7 +62,7 @@ Vim is rock stable and is continuously being developed to become even better. Am
     integrates with many tools
 
 
-
+[![Vim][gif]]
 
 ## Getting Started 
 
@@ -79,6 +78,33 @@ Vim is rock stable and is continuously being developed to become even better. Am
 > Then replace your .vim/bundle folder with the with the one given the repo
 
 
+
+
+
+## Looking into the first Plugin 
+
+* Nerd Tree 
+ [![Nerd_Tree][tree]]
+    This is the way to arrange the directory in the tree like structure as you can see on the left side of the screen
+
+* Colorscheme
+    I am using a royal colorscheme this is the reason i have a colorful screen text
+    
+* Devions 
+    As you can see on the above picture in the nerd tree there is the icon for folder and programming languauge like c++ and py
+    
+* Powerline 
+    The bar that you see the the bottom of the screen that contains information of the files including the programming language name used
+    
+* Auto pairs
+    This just helps to auto pairs your brackets 
+    
+* Theme 
+    I am using a onedark theme 
+    
+* fzf 
+    It hels in fuzzy search i.e search anyfile direct from the editor itself
+
 ## License
 
 > Feel free to circulate opensourced 
@@ -86,33 +112,6 @@ Vim is rock stable and is continuously being developed to become even better. Am
 ## Contact
 
 Your Name - [@Umang](https://twitter.com/ssingh_umang) - umang20singh@gmail.com
-
-
-## Looking into the first Plugin 
-
-> Nerd Tree 
-  [![Nerd_Tree][tree]]
-    This is the way to arrange the directory in the tree like structure as you can see on the left side of the screen
-
-> Colorscheme
-    I am using a royal colorscheme this is the reason i have a colorful screen text
-    
-> Devions 
-    As you can see on the above picture in the nerd tree there is the icon for folder and programming languauge like c++ and py
-    
-> Powerline 
-    The bar that you see the the bottom of the screen that contains information of the files including the programming language name used
-    
-> Auto pairs
-    This just helps to auto pairs your brackets 
-    
-> Theme 
-    I am using a onedark theme 
-    
-> fzf 
-    It hels in fuzzy search i.e search anyfile direct from the editor itself
-
-
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
@@ -124,7 +123,7 @@ Your Name - [@Umang](https://twitter.com/ssingh_umang) - umang20singh@gmail.com
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [product-screenshot]: images/vim1.png
 [tree]: images/vim.png
-[gif] : images/vim.gif
+[gif]: images/vim.gif
 
 
 
