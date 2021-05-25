@@ -1,0 +1,130 @@
+packadd! onedark.vim
+set encoding=utf-8
+set relativenumber
+
+set clipboard=unnamedplus
+
+set nocompatible              
+set mouse =n
+syntax on
+filetype off     
+set number
+let g:airline_powerline_fonts=1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '>'
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+filetype plugin indent on    " required
+let g:Powerline_symbols = 'fancy'
+set number
+syntax enable
+set guicursor=i:ver25-iCursor
+set autoindent
+"colorscheme dracula
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+set encoding=UTF-8
+let g:airline_theme='one'
+nnoremap <F8> :!g++ -o  %:r.out % -std=c++14<Enter>
+nnoremap <F9> :!./%:r.out
+nnoremap <F5> :!python3 %
+":autocmd BufNewFile *.cpp 0r ~/.vim/templates/skeleton.cpp
+noremap <F2> ggVGyy
+set hidden
+set ignorecase
+set wildmenu
+set smartcase
+set laststatus=2
+set hlsearch
+set incsearch
+set cindent
+
+map <C-t> :NERDTreeToggle<CR> " T for tree
+" Opening nerd tree when opening a folder
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+" Close vim if only nerdtree is open
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+autocmd FileType python map <buffer> <F6> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+autocmd FileType python imap <buffer> <F6> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+
+
+
+"navigate back 
+nnoremap <silent> <C-b> :bp<CR>
+
+"vertical split
+nnoremap <C-v> : vsplit 
+nnoremap <C-h> : split
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+" syntactic settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+" Colorscheme the vim 
+colorscheme onedark
+let g:one_allow_italics = 1 " I love italic for comments
+
+" Toggle transparent background
+let t:is_transparent = 0
+function! Toggle_transparent()
+    if t:is_transparent == 0
+        hi Normal guibg=NONE ctermbg=NONE
+        let t:is_transparent = 1
+    else
+        set background=dark
+        let t:is_tranparent = 0
+    endif
+endfunction
+nnoremap <F1> : call Toggle_transparent()<CR>
+
+"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
+"If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
+"(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
+if (empty($TMUX))
+  if (has("nvim"))
+    "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+  if (has("termguicolors"))
+    set termguicolors
+  endif
+endif
+
+syntax on
+" Set the colorscheme
+set background=dark
+" colorscheme solarized8
+colorscheme onedark
+
+" Change the default exlorer view
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 2
+let g:netrw_winsize = 25
+" This makes the explore open by default
+"augroup ProjectDrawer
+"  autocmd!
+"  autocmd VimEnter * :Vexplore
+"augroup END
+
+let g:ale_linters = {
+      \   'ruby': [ 'rubocop']
+      \}
+
+let g:rubycomplete_buffer_loading = 1
+let g:rubycomplete_classes_in_global = 1
+let g:rubycomplete_rails = 1
